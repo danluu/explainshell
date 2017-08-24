@@ -130,6 +130,7 @@ class manager(object):
         return added, exists
 
     def findmulticommands(self):
+        print "----exec findmulticommands"
         manpages = {}
         potential = []
         for _id, m in self.store.names():
@@ -157,6 +158,8 @@ class manager(object):
             self.store.setmulticommand(_id)
             logger.info('making %r a multicommand', multicommand)
 
+        print mappingstoadd
+        print multicommands
         return mappingstoadd, multicommands
 
 def main(files, dbname, dbhost, overwrite, drop, verify):

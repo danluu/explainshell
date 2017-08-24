@@ -181,6 +181,9 @@ class manpage(object):
                 'multicommand' : self.multicommand, 'updated' : self.updated,
                 'nestedcommand' : self.nestedcommand}
 
+    def num_options(self):
+        return len(self.options)
+
     @staticmethod
     def from_store(d):
         paragraphs = []
@@ -327,6 +330,7 @@ class store(object):
         self.mapping.insert({'src' : src, 'dst' : dst, 'score' : score})
 
     def addmanpage(self, m):
+        # print "----exec addmanpage"
         '''add m into the store, if it exists first remove it and its mappings
 
         each man page may have aliases besides the name determined by its
@@ -343,6 +347,9 @@ class store(object):
             logger.info('removed %d mappings for manpage %s', c, m.source)
 
         o = self.manpage.insert(m.to_store())
+        print "NUM_OPTIONS:",m.num_options()
+        # wat = m.to_store()
+
 
         for alias, score in m.aliases:
             self.addmapping(alias, o, score)
