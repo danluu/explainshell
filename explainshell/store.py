@@ -347,7 +347,7 @@ class store(object):
             logger.info('removed %d mappings for manpage %s', c, m.source)
 
         o = self.manpage.insert(m.to_store())
-        print "NUM_OPTIONS:",m.num_options()
+        print "{},{}".format(m.to_store()['name'], m.num_options())
         # wat = m.to_store()
 
 
